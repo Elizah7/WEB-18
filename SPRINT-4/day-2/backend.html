@@ -5,8 +5,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #nav{
+            display: flex;
+            width: 100%;
+            height: 80px;
+            background-color: teal;
+            justify-content: center;
+            align-items: center;
+        }
+        #nav>div{
+            margin-left:5% ;
+            font-size: 150%;
+        }
+        #form{
+            margin-top:5% ;
+        }
+    </style>
 </head>
 <body>
-  
+    <div id="nav">
+        <div>
+            <a href="backend.html"> backend</a>
+        </div>
+        <div>
+            <a href="frontend.html">frontend</a>
+        </div>
+
+    </div> 
+   
+    <form id="form">
+        <input id="name"type="text" placeholder="Enter Your Name">
+        <input id="url" type="text" placeholder="imgurl">
+        <input id="logo" type="text" placeholder="logo">
+        <input id="role" type="text" placeholder="role">
+        <input type="submit">
+    </form>
 </body>
 </html>
+<script>
+      
+     var arr =  JSON.parse(localStorage.getItem("userData"))||[]; 
+     
+    var form = document.querySelector("form");
+    form.addEventListener("submit", myFunction);
+    function myFunction(){
+        event.preventDefault();
+        var obj ={
+            name:form.name.value,
+            url:form.url.value,
+            logo:form.logo.value,
+            role:form.role.value
+        }
+    arr.push(obj)
+     localStorage.setItem("userData",JSON.stringify(arr));
+    }
+</script>
